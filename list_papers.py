@@ -3,18 +3,11 @@
 import os
 import argparse
 import dropbox
-from dropbox.files import (
-    ListFolderResult,
-    Metadata,
-    FileMetadata,
-    FolderMetadata,
-    DeletedMetadata,
-)
 from dropbox.paper import ListPaperDocsResponse, PaperDocExportResult, ExportFormat
-from dropbox.exceptions import ApiError
 
 
 def main(args):
+    """Main"""
     print(args)
     dbx = dropbox.Dropbox(args.token)
 
@@ -42,9 +35,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Basic test of sample tutorial")
-    parser.add_argument(
-        "--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN")
-    )
+    parser.add_argument("--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN"))
 
     arg = parser.parse_args()
     main(arg)

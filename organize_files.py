@@ -63,9 +63,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Basic test of sample tutorial")
-    parser.add_argument(
-        "--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN")
-    )
+    parser.add_argument("--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN"))
 
     arg = parser.parse_args()
     main(arg)

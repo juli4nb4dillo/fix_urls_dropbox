@@ -7,7 +7,7 @@ name = "pypi"
 dropbox = "*"
 
 [dev - packages]
-pylint = "*"
+flake8 = "*"
 black = "*"
 
 [requires]

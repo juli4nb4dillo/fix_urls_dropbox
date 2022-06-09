@@ -9,6 +9,7 @@ from dropbox.paper import (
     PaperDocUpdatePolicy,
 )
 
+
 def main(args):
     print(args)
     dbx = dropbox.Dropbox(args.token)
@@ -35,9 +36,7 @@ if __name__ == "__main__":
     parser.add_argument(dest="in_file_path")
     parser.add_argument(dest="doc_id")
     parser.add_argument(dest="rev", default="1")
-    parser.add_argument(
-        "--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN")
-    )
+    parser.add_argument("--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN"))
     arg = parser.parse_args()
     main(arg)
 # 8UHH0KQFM0CdRYtByDCCk
