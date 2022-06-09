@@ -3,10 +3,15 @@
 import os
 import argparse
 import dropbox
-from dropbox.files import ListFolderResult, Metadata, FileMetadata, FolderMetadata, DeletedMetadata
+from dropbox.files import (
+    ListFolderResult,
+    Metadata,
+    FileMetadata,
+    FolderMetadata,
+    DeletedMetadata,
+)
 from dropbox.paper import ListPaperDocsResponse, PaperDocExportResult, ExportFormat
 from dropbox.exceptions import ApiError
-
 
 
 def main(args):
@@ -17,7 +22,7 @@ def main(args):
     docs_list = []
     res: ListPaperDocsResponse = dbx.paper_docs_list()
     while True:
-        
+
         for entry in res.doc_ids:
             print(entry)
             docs_list.append(entry)
@@ -29,14 +34,17 @@ def main(args):
     # try download
     res: PaperDocExportResult = dbx.paper_docs_download_to_file(
         download_path="./paper3_old.html",
-        doc_id=docs_list[2], 
-        export_format=ExportFormat.html)
+        doc_id=docs_list[2],
+        export_format=ExportFormat.html,
+    )
     print(f"{res.title} downlaoded, rev {res.revision}")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Basic test of sample tutorial')
-    parser.add_argument('--token', "-t", dest='token', default=os.environ.get("DROPBOX_TOKEN"))
+    parser = argparse.ArgumentParser(description="Basic test of sample tutorial")
+    parser.add_argument(
+        "--token", "-t", dest="token", default=os.environ.get("DROPBOX_TOKEN")
+    )
 
     arg = parser.parse_args()
     main(arg)

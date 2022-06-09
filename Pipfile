@@ -6,8 +6,12 @@ name = "pypi"
 [packages]
 dropbox = "*"
 
-[dev-packages]
+[dev - packages]
 pylint = "*"
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
